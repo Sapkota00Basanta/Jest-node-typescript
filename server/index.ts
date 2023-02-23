@@ -1,15 +1,19 @@
-// This the main module where server is initialzed
-import express from 'express';
-import morgan from 'morgan';
 import { logger } from './common/logger';
-import allowCrossDomian from './middleware/crossOrigin.middleware';
+import Knex from 'knex';
+import { Model } from 'objection';
+import { app } from './util/server';
 
-// Define an express server
-const app = express();
+// configure Database
+const knexConfiguration = Knex({
+  client: 'pg',
+  connection: process.env.DATABASE_URL,
+  migrations: {
+    extension: 'ts',
+  },
+});
 
-// Use Middlewares for express server
-app.use(morgan('dev'));
-app.use(allowCrossDomian);
+// Connect database to Objection
+Model.knex(knexConfiguration);
 
 // Define port & host for express server
 const port = parseInt(process.env.PORT ?? '3000');

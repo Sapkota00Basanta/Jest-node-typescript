@@ -1,0 +1,16 @@
+version: '3'
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:14-alpine # More optimized version of postgres
+    ports:
+      - 5432:5432 # To connect postgres locallly outside docker
+    environment:
+      POSTGRES_DB: jest-test_dev # Change _dev to _prod to define a production database
+      POSTGRES_HOST_AUTH_METHOD: trust
+      # POSTGRES_USER: test_admin
+      # POSTGRES_PASSWORD: password
+    volumes:
+      - ./:/var/lib/postgresql
+    network_mode: host
+# volumes: postgres
