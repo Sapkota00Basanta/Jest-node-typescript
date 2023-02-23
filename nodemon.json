@@ -1,0 +1,8 @@
+{
+  "execMap": {
+    "ts": "@swc/register"
+  },
+  "ignore": ["test/**/*.ts", "test/**/*.spec.ts", ".git", "node_modules"],
+  "watch": ["server", "server/.env"],
+  "ext": "ts,js,json,yaml,yml,env,*"
+}

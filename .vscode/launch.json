@@ -1,0 +1,27 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node", // Debugger connected to node server
+      "request": "attach", // attach docker server
+      "name": "Node (Docker)",
+      "port": 9229,
+      "restart": true,
+      "remoteRoot": "/usr/share/app", // root path of docker application server
+      "sourceMaps": true, // Source maps defined in swc compiler for debugging
+      "skipFiles": [
+        "/usr/share/app/node_modules/**/*.js",
+        "<node_internals>/**"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch",
+      "cwd": "${workspaceFolder}",
+      "runtimeVersion": "16",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run-script", "dev"]
+    }
+  ]
+}
