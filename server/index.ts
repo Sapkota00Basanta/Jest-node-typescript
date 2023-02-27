@@ -4,16 +4,18 @@ import { Model } from 'objection';
 import { app } from './util/server';
 
 // configure Database
-const knexConfiguration = Knex({
-  client: 'pg',
-  connection: process.env.DATABASE_URL,
-  migrations: {
-    extension: 'ts',
-  },
-});
+// const knexConfiguration = Knex({
+//   client: 'pg',
+//   connection: process.env.DATABASE_URL,
+//   migrations: {
+//     extension: 'ts',
+//     // tableName: 'test_table_migration',
+//     // directory: 'server/db/migrations',
+//   },
+// });
 
 // Connect database to Objection
-Model.knex(knexConfiguration);
+// Model.knex(knexConfiguration);
 
 // Define port & host for express server
 const port = parseInt(process.env.PORT ?? '3000');
